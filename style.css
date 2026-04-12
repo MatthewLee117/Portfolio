@@ -48,3 +48,32 @@ nav a:hover {
   background-color: #fce7f3;
   padding-bottom: 0.1em;
 }
+
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1em;
+}
+
+form label {
+  display: grid;
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+}
+
+form input,
+form textarea,
+form button {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+form button {
+  grid-column: 1 / -1;
+}
