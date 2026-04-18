@@ -39,13 +39,30 @@ function setColorScheme(colorScheme) {
   colorSchemeSelect.value = colorScheme;
 }
 
-const savedColorScheme = localStorage.getItem("colorScheme");
+function getSavedColorScheme() {
+  try {
+    return localStorage.getItem("colorScheme");
+  } catch (error) {
+    console.warn("Could not read localStorage:", error);
+    return null;
+  }
+}
+
+function saveColorScheme(colorScheme) {
+  try {
+    localStorage.setItem("colorScheme", colorScheme);
+  } catch (error) {
+    console.warn("Could not write localStorage:", error);
+  }
+}
+
+const savedColorScheme = getSavedColorScheme();
 setColorScheme(savedColorScheme || "light dark");
 
 colorSchemeSelect.addEventListener("input", (event) => {
   const selectedScheme = event.target.value;
   setColorScheme(selectedScheme);
-  localStorage.setItem("colorScheme", selectedScheme);
+  saveColorScheme(selectedScheme);
 });
 
 colorSchemeLabel.append("Theme: ", colorSchemeSelect);
