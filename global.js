@@ -17,8 +17,41 @@ const BASE_PATH =
     ? "/"
     : "/Portfolio/";
 
+const colorSchemeLabel = document.createElement("label");
+colorSchemeLabel.className = "color-scheme";
+const colorSchemeSelect = document.createElement("select");
+
+const colorSchemeOptions = [
+  { value: "light dark", label: "Automatic" },
+  { value: "light", label: "Light" },
+  { value: "dark", label: "Dark" },
+];
+
+for (const option of colorSchemeOptions) {
+  const optionElement = document.createElement("option");
+  optionElement.value = option.value;
+  optionElement.textContent = option.label;
+  colorSchemeSelect.append(optionElement);
+}
+
+function setColorScheme(colorScheme) {
+  document.documentElement.style.colorScheme = colorScheme;
+  colorSchemeSelect.value = colorScheme;
+}
+
+const savedColorScheme = localStorage.getItem("colorScheme");
+setColorScheme(savedColorScheme || "light dark");
+
+colorSchemeSelect.addEventListener("input", (event) => {
+  const selectedScheme = event.target.value;
+  setColorScheme(selectedScheme);
+  localStorage.setItem("colorScheme", selectedScheme);
+});
+
+colorSchemeLabel.append("Theme: ", colorSchemeSelect);
+
 const nav = document.createElement("nav");
-document.body.prepend(nav);
+document.body.prepend(colorSchemeLabel, nav);
 
 for (const p of pages) {
   let url = p.url;
