@@ -127,13 +127,29 @@ export function renderProjects(projects, containerElement, headingLevel = "h2") 
 
   for (const project of projects) {
     const article = document.createElement("article");
+    article.className = "project-card";
 
-    article.innerHTML = `
-      <${allowedHeading}>${project.title ?? "Untitled Project"}</${allowedHeading}>
-      <img src="${project.image ?? ""}" alt="${project.title ?? "Project image"}">
-      <p>${project.description ?? "No description available."}</p>
-      ${project.year ? `<p><strong>Year:</strong> ${project.year}</p>` : ""}
-    `;
+    const title = document.createElement(allowedHeading);
+    title.className = "project-title";
+    title.textContent = project.title ?? "Untitled Project";
+
+    const image = document.createElement("img");
+    image.className = "project-image";
+    image.src = project.image ?? "";
+    image.alt = project.title ?? "Project image";
+
+    const description = document.createElement("p");
+    description.className = "project-description";
+    description.textContent = project.description ?? "No description available.";
+
+    article.append(title, image, description);
+
+    if (project.year) {
+      const year = document.createElement("p");
+      year.className = "project-year";
+      year.textContent = `Year: ${project.year}`;
+      article.append(year);
+    }
 
     containerElement.appendChild(article);
   }

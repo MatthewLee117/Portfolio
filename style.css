@@ -101,21 +101,26 @@ form button {
   display: flex;
   flex-direction: column;
   gap: 1em;
+  min-width: 0;
 }
 
-.projects > article h1,
-.projects > article h2,
-.projects > article h3,
-.projects > article h4,
-.projects > article h5,
-.projects > article h6 {
+.project-title {
   margin: 0;
+  line-height: 1.2;
+  text-wrap: pretty;
 }
 
-.projects > article img {
+.project-image {
   width: 100%;
   height: auto;
   display: block;
+}
+
+.project-description,
+.project-year {
+  margin: 0;
+  line-height: 1.4;
+  position: static;
 }
 
 h1 {
@@ -132,14 +137,24 @@ h6 {
   text-wrap: balance;
 }
 
-#profile-stats dl {
+#profile-stats .github-stats-grid {
   display: grid;
-  grid-template-columns: max-content max-content;
-  gap: 0.4rem 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 0.8rem;
+}
+
+#profile-stats .github-stat {
+  border: 1px solid var(--border-color, oklch(50% 10% 200 / 40%));
+  border-radius: 0.5rem;
+  padding: 0.75rem 1rem;
+}
+
+#profile-stats .github-stat h3,
+#profile-stats .github-stat p {
   margin: 0;
 }
 
-#profile-stats dt,
-#profile-stats dd {
-  margin: 0;
+#profile-stats .github-stat p {
+  font-size: 1.5rem;
+  font-weight: 700;
 }
