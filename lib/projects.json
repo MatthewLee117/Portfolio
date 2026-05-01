@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Lab 1: Personal Website",
+    "year": 2024,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Built a multi-page personal portfolio with semantic HTML structure and basic styling."
+  },
+  {
+    "title": "Lab 2: Styling and Layout",
+    "year": 2024,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Improved typography, spacing, and responsive behavior using CSS across portfolio pages."
+  },
+  {
+    "title": "Lab 3: Forms and Navigation",
+    "year": 2024,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Added a contact form and consistent navigation system between all portfolio sections."
+  },
+  {
+    "title": "Lab 4: JavaScript Templating",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Rendered project cards dynamically from JSON and reused modules across pages."
+  },
+  {
+    "title": "Course Notes Visualizer",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Prototyped a simple visualization to summarize weekly study topics and effort."
+  },
+  {
+    "title": "Church Event Flyer Site",
+    "year": 2023,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Created a static landing page for a community event with schedule and registration links."
+  },
+  {
+    "title": "Workout Tracker",
+    "year": 2025,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Designed a lightweight tracker concept for recording weekly workouts and progress goals."
+  },
+  {
+    "title": "Study Group Planner",
+    "year": 2024,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Built a planning mockup for scheduling group sessions and sharing meeting agendas."
+  },
+  {
+    "title": "Campus Food Finder",
+    "year": 2023,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Drafted a concept page listing favorite spots near campus with quick notes and ratings."
+  },
+  {
+    "title": "Prayer Request Board",
+    "year": 2022,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Created a simple board concept for sharing requests and encouragement in small groups."
+  },
+  {
+    "title": "Resume Refresh",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Updated resume layout and supporting website page for internship applications."
+  },
+  {
+    "title": "Portfolio QA Pass",
+    "year": 2026,
+    "image": "https://dsc106.com/labs/lab02/images/empty.svg",
+    "description": "Reviewed links, accessibility labels, and content consistency across all pages."
+  }
+]
