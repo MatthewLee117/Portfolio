@@ -142,16 +142,14 @@ h6 {
 }
 
 #profile-stats .github-stats-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(8rem, 1fr));
+  gap: 1.25rem 2rem;
 }
 
 #profile-stats .github-stat {
-  flex: 1 1 11rem;
-  border: 1px solid var(--border-color, oklch(50% 10% 200 / 40%));
-  border-radius: 0.5rem;
-  padding: 0.75rem 1rem;
+  border: 0;
+  padding: 0;
 }
 
 #profile-stats .github-stat h3,
@@ -159,9 +157,19 @@ h6 {
   margin: 0;
 }
 
+#profile-stats .github-stat h3 {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
 #profile-stats .github-stat p {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 1;
+  font-weight: 500;
 }
 
 /* Fallback styling if older <dl> markup is cached or rendered */
@@ -189,6 +197,10 @@ h6 {
 }
 
 @media (max-width: 700px) {
+  #profile-stats .github-stats-grid {
+    grid-template-columns: repeat(2, minmax(8rem, 1fr));
+  }
+
   #profile-stats dl {
     grid-template-columns: repeat(2, minmax(8rem, 1fr));
   }

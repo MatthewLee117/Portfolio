@@ -25,10 +25,10 @@ try {
   if (profileStats) {
     profileStats.innerHTML = `
       <div class="github-stats-grid">
-        <article class="github-stat"><h3>Public Repos</h3><p>${githubData.public_repos}</p></article>
-        <article class="github-stat"><h3>Public Gists</h3><p>${githubData.public_gists}</p></article>
         <article class="github-stat"><h3>Followers</h3><p>${githubData.followers}</p></article>
         <article class="github-stat"><h3>Following</h3><p>${githubData.following}</p></article>
+        <article class="github-stat"><h3>Public Repos</h3><p>${githubData.public_repos}</p></article>
+        <article class="github-stat"><h3>Public Gists</h3><p>${githubData.public_gists}</p></article>
       </div>
     `;
   }
