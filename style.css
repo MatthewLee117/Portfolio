@@ -94,22 +94,28 @@ form button {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
   gap: 1em;
+  align-items: start;
 }
 
 .projects > article {
-  display: grid;
-  grid-template-rows: subgrid;
-  grid-row: span 3;
+  display: flex;
+  flex-direction: column;
   gap: 1em;
 }
 
-.projects > article h2 {
+.projects > article h1,
+.projects > article h2,
+.projects > article h3,
+.projects > article h4,
+.projects > article h5,
+.projects > article h6 {
   margin: 0;
 }
 
 .projects > article img {
   width: 100%;
   height: auto;
+  display: block;
 }
 
 h1 {
