@@ -100,7 +100,7 @@ form button {
 .projects > article {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.75em;
   min-width: 0;
 }
 
@@ -123,6 +123,10 @@ form button {
   position: static;
 }
 
+.project-year {
+  margin-top: 0.2rem;
+}
+
 h1 {
   font-size: 400%;
 }
@@ -138,12 +142,13 @@ h6 {
 }
 
 #profile-stats .github-stats-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: 0.8rem;
 }
 
 #profile-stats .github-stat {
+  flex: 1 1 11rem;
   border: 1px solid var(--border-color, oklch(50% 10% 200 / 40%));
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
@@ -157,4 +162,34 @@ h6 {
 #profile-stats .github-stat p {
   font-size: 1.5rem;
   font-weight: 700;
+}
+
+/* Fallback styling if older <dl> markup is cached or rendered */
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(8rem, 1fr));
+  gap: 0.4rem 1rem;
+  margin: 0;
+}
+
+#profile-stats dt,
+#profile-stats dd {
+  margin: 0;
+}
+
+#profile-stats dt {
+  grid-row: 1;
+  font-weight: 600;
+}
+
+#profile-stats dd {
+  grid-row: 2;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+@media (max-width: 700px) {
+  #profile-stats dl {
+    grid-template-columns: repeat(2, minmax(8rem, 1fr));
+  }
 }
