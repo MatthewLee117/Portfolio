@@ -131,3 +131,15 @@ h6 {
   line-height: 1.1;
   text-wrap: balance;
 }
+
+#profile-stats dl {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 0.4rem 1rem;
+  margin: 0;
+}
+
+#profile-stats dt,
+#profile-stats dd {
+  margin: 0;
+}
