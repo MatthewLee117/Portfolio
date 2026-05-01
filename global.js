@@ -12,10 +12,10 @@ const pages = [
   { url: "https://github.com/MatthewLee117", title: "GitHub" },
 ];
 
-const BASE_PATH =
-  location.hostname === "localhost" || location.hostname === "127.0.0.1"
-    ? "/"
-    : "/Portfolio/";
+const isLocalhost = location.hostname === "localhost" || location.hostname === "127.0.0.1";
+const isGitHubPages = location.hostname.endsWith("github.io");
+const repoName = isGitHubPages ? location.pathname.split("/")[1] : "";
+const BASE_PATH = isLocalhost || !repoName ? "/" : `/${repoName}/`;
 
 const colorSchemeLabel = document.createElement("label");
 colorSchemeLabel.className = "color-scheme";
