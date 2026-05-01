@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 console.log("IT'S ALIVE!");
 
 function $$(selector, context = document) {
@@ -9,8 +8,8 @@ const pages = [
   { url: "", title: "Home" },
   { url: "projects/", title: "Projects" },
   { url: "contact/", title: "Contact" },
-  { url: "resume/?v=2", title: "Resume" },
-  { url: "https://github.com/matthewlee", title: "GitHub" },
+  { url: "resume/", title: "Resume" },
+  { url: "https://github.com/MatthewLee117", title: "GitHub" },
 ];
 
 const BASE_PATH =
@@ -57,8 +56,7 @@ function saveColorScheme(colorScheme) {
   }
 }
 
-const savedColorScheme = getSavedColorScheme();
-setColorScheme(savedColorScheme || "light dark");
+setColorScheme(getSavedColorScheme() || "light dark");
 
 colorSchemeSelect.addEventListener("input", (event) => {
   const selectedScheme = event.target.value;
@@ -73,7 +71,6 @@ document.body.prepend(colorSchemeLabel, nav);
 
 for (const p of pages) {
   let url = p.url;
-  const title = p.title;
 
   if (!url.startsWith("http")) {
     url = BASE_PATH + url;
@@ -81,7 +78,7 @@ for (const p of pages) {
 
   const a = document.createElement("a");
   a.href = url;
-  a.textContent = title;
+  a.textContent = p.title;
 
   if (a.host === location.host && a.pathname === location.pathname) {
     a.classList.add("current");
@@ -94,7 +91,7 @@ for (const p of pages) {
 
   nav.append(a);
 }
-=======
+
 export async function fetchJSON(url) {
   let response;
 
@@ -115,27 +112,27 @@ export async function fetchJSON(url) {
   }
 }
 
-export function renderProjects(projects, containerElement, headingLevel = 'h2') {
+export function renderProjects(projects, containerElement, headingLevel = "h2") {
   if (!Array.isArray(projects)) {
-    throw new Error('renderProjects expected an array of projects.');
+    throw new Error("renderProjects expected an array of projects.");
   }
 
   if (!(containerElement instanceof Element)) {
-    throw new Error('renderProjects expected a valid container element.');
+    throw new Error("renderProjects expected a valid container element.");
   }
 
-  const allowedHeading = /^h[1-6]$/i.test(headingLevel) ? headingLevel.toLowerCase() : 'h2';
+  const allowedHeading = /^h[1-6]$/i.test(headingLevel) ? headingLevel.toLowerCase() : "h2";
 
-  containerElement.innerHTML = '';
+  containerElement.innerHTML = "";
 
   for (const project of projects) {
-    const article = document.createElement('article');
+    const article = document.createElement("article");
 
     article.innerHTML = `
-      <${allowedHeading}>${project.title ?? 'Untitled Project'}</${allowedHeading}>
-      <img src="${project.image ?? ''}" alt="${project.title ?? 'Project image'}">
-      <p>${project.description ?? 'No description available.'}</p>
-      ${project.year ? `<p><strong>Year:</strong> ${project.year}</p>` : ''}
+      <${allowedHeading}>${project.title ?? "Untitled Project"}</${allowedHeading}>
+      <img src="${project.image ?? ""}" alt="${project.title ?? "Project image"}">
+      <p>${project.description ?? "No description available."}</p>
+      ${project.year ? `<p><strong>Year:</strong> ${project.year}</p>` : ""}
     `;
 
     containerElement.appendChild(article);
@@ -144,11 +141,10 @@ export function renderProjects(projects, containerElement, headingLevel = 'h2') 
 
 export async function fetchGitHubData(username) {
   if (!username) {
-    throw new Error('fetchGitHubData requires a username.');
+    throw new Error("fetchGitHubData requires a username.");
   }
 
   return fetchJSON(`https://api.github.com/users/${username}`);
 }
 
 export const fetchGithubData = fetchGitHubData;
->>>>>>> 7eee42a (lab 4)

@@ -20,7 +20,7 @@ try {
 const profileStats = document.querySelector('#profile-stats');
 
 try {
-  const githubData = await fetchGitHubData('mxxthewlee');
+  const githubData = await fetchGitHubData('MatthewLee117');
 
   if (profileStats) {
     profileStats.innerHTML = `
