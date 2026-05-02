@@ -270,9 +270,22 @@ h6 {
 .searchBar {
   width: 100%;
   margin: 0.75rem 0 1.25rem;
-  padding: 0.6rem 0.85rem;
-  border: 1px solid color-mix(in oklch, canvasText, canvas 75%);
-  border-radius: 0.35rem;
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  border: 2px solid color-mix(in oklch, canvasText, canvas 55%);
+  border-radius: 0.6rem;
+  background: color-mix(in oklch, canvas 92%, var(--color-accent) 8%);
+  box-shadow: 0 1px 0 color-mix(in oklch, canvasText, canvas 85%);
+}
+
+.searchBar::placeholder {
+  color: color-mix(in oklch, canvasText, canvas 35%);
+}
+
+.searchBar:focus {
+  outline: 3px solid color-mix(in oklch, var(--color-accent), white 30%);
+  outline-offset: 2px;
+  border-color: var(--color-accent);
 }
 
 @media (max-width: 800px) {
