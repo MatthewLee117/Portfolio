@@ -44,7 +44,17 @@ function renderPieChart(projectsGiven) {
     .data(arcData)
     .join('path')
     .attr('d', arc)
+    .attr('data-year', (d) => d.data.label)
     .attr('fill', (d) => colors(d.data.label))
+    .attr('transform', (d) => {
+      if (d.data.label !== selectedYear) return null;
+      const [x, y] = arc.centroid(d);
+      const magnitude = Math.hypot(x, y) || 1;
+      const offset = 6;
+      const tx = (x / magnitude) * offset;
+      const ty = (y / magnitude) * offset;
+      return `translate(${tx}, ${ty})`;
+    })
     .classed('selected', (d) => d.data.label === selectedYear)
     .on('click', (_event, d) => {
       selectedYear = selectedYear === d.data.label ? null : d.data.label;
