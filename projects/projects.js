@@ -16,14 +16,8 @@ function projectMatchesQuery(project, queryText) {
   return values.includes(queryText.toLowerCase());
 }
 
-function getFilteredProjects() {
-  let filtered = allProjects.filter((project) => projectMatchesQuery(project, query));
-
-  if (selectedYear !== null) {
-    filtered = filtered.filter((project) => String(project.year) === selectedYear);
-  }
-
-  return filtered;
+function getQueryFilteredProjects() {
+  return allProjects.filter((project) => projectMatchesQuery(project, query));
 }
 
 function renderPieChart(projectsGiven) {
@@ -73,15 +67,27 @@ function renderPieChart(projectsGiven) {
 }
 
 function updateUI() {
-  const filteredProjects = getFilteredProjects();
+  const queryFilteredProjects = getQueryFilteredProjects();
+  const selectedYearStillVisible =
+    selectedYear !== null && queryFilteredProjects.some((p) => String(p.year) === selectedYear);
 
-  renderProjects(filteredProjects, projectsContainer, 'h2');
-
-  if (projectsTitle) {
-    projectsTitle.textContent = `Projects (${filteredProjects.length})`;
+  if (!selectedYearStillVisible) {
+    selectedYear = null;
   }
 
-  renderPieChart(filteredProjects);
+  const displayedProjects =
+    selectedYear === null
+      ? queryFilteredProjects
+      : queryFilteredProjects.filter((project) => String(project.year) === selectedYear);
+
+  renderProjects(displayedProjects, projectsContainer, 'h2');
+
+  if (projectsTitle) {
+    projectsTitle.textContent = `Projects (${displayedProjects.length})`;
+  }
+
+  // Keep the pie based on search-visible projects so users can switch year selections.
+  renderPieChart(queryFilteredProjects);
 }
 
 try {
@@ -91,7 +97,6 @@ try {
 
   searchInput?.addEventListener('input', (event) => {
     query = event.target.value.trim();
-    selectedYear = null;
     updateUI();
   });
 } catch (error) {
