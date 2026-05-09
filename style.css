@@ -293,3 +293,84 @@ h6 {
     flex-direction: column;
   }
 }
+
+#stats .stats,
+#language-breakdown.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 0.4rem 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+#stats dt,
+#language-breakdown dt {
+  font-weight: 650;
+}
+
+#stats dd,
+#language-breakdown dd {
+  margin: 0 0 0.5rem;
+  color: color-mix(in oklch, canvasText, canvas 25%);
+}
+
+.chart-wrap {
+  overflow-x: auto;
+}
+
+#chart {
+  width: 100%;
+  height: auto;
+  background: color-mix(in oklch, canvas 94%, canvasText 6%);
+  border: 1px solid color-mix(in oklch, canvasText, canvas 75%);
+  border-radius: 0.5rem;
+}
+
+.grid line {
+  stroke: color-mix(in oklch, canvasText, canvas 80%);
+  stroke-opacity: 0.5;
+}
+
+.grid path {
+  display: none;
+}
+
+.commit-dot {
+  transition: opacity 120ms ease, stroke 120ms ease;
+}
+
+.commit-dot:hover {
+  stroke: canvas;
+  stroke-width: 1.5;
+}
+
+.commit-dot.selected {
+  stroke: #111;
+  stroke-width: 1.75;
+}
+
+#selection-count {
+  font-weight: 650;
+  margin: 0.2rem 0 0.75rem;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 999;
+  pointer-events: none;
+  background: color-mix(in oklch, canvas 88%, canvasText 12%);
+  color: canvasText;
+  border: 1px solid color-mix(in oklch, canvasText, canvas 70%);
+  border-radius: 0.5rem;
+  padding: 0.65rem 0.8rem;
+  box-shadow: 0 8px 20px color-mix(in oklch, black, transparent 80%);
+  max-width: 18rem;
+}
+
+.tooltip p {
+  margin: 0.15rem 0;
+}
+
+.brush .selection {
+  fill: color-mix(in oklch, var(--color-accent), transparent 70%);
+  stroke: color-mix(in oklch, var(--color-accent), canvasText 15%);
+}

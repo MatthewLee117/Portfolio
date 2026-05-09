@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meta Analysis</title>
+  <link rel="stylesheet" href="../style.css?v=20260508a">
+</head>
+<body>
+  <h1>Codebase Meta Analysis</h1>
+  <p>This page summarizes commit-level code activity and line-level statistics for this portfolio repository.</p>
+
+  <section>
+    <h2>Summary Stats</h2>
+    <div id="stats"></div>
+  </section>
+
+  <section>
+    <h2>Commit Activity</h2>
+    <p id="selection-count">No commits selected</p>
+    <dl id="language-breakdown" class="stats"></dl>
+    <div class="chart-wrap">
+      <svg id="chart" viewBox="0 0 1000 600" aria-label="Scatterplot of commit activity"></svg>
+    </div>
+  </section>
+
+  <div id="commit-tooltip" class="tooltip" hidden>
+    <p><strong>Commit:</strong> <a href="" target="_blank" rel="noopener noreferrer" id="commit-link"></a></p>
+    <p><strong>Date:</strong> <span id="commit-date"></span></p>
+    <p><strong>Time:</strong> <span id="commit-time"></span></p>
+    <p><strong>Author:</strong> <span id="commit-author"></span></p>
+    <p><strong>Lines:</strong> <span id="commit-lines"></span></p>
+  </div>
+
+  <script src="../global.js?v=20260508a" type="module"></script>
+  <script src="index.js?v=20260508a" type="module"></script>
+</body>
+</html>
