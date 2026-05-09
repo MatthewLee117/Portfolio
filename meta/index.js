@@ -66,18 +66,12 @@ function renderStats(lines) {
 
   statsContainer.innerHTML = '';
   const grid = document.createElement('div');
-  grid.className = 'kv-grid stats-grid';
+  grid.className = 'kv-list';
 
   const addStat = (label, value) => {
-    const row = document.createElement('div');
-    row.className = 'kv-row';
-    const key = document.createElement('div');
-    key.className = 'kv-key';
-    key.textContent = label;
-    const val = document.createElement('div');
-    val.className = 'kv-value';
-    val.textContent = value;
-    row.append(key, val);
+    const row = document.createElement('p');
+    row.className = 'kv-line';
+    row.innerHTML = `<strong>${label}:</strong> <span>${value}</span>`;
     grid.append(row);
   };
 
@@ -158,15 +152,9 @@ function updateSelectionUI() {
 
   languageBreakdown.innerHTML = '';
   for (const [lang, count] of byLang) {
-    const row = document.createElement('div');
-    row.className = 'kv-row';
-    const key = document.createElement('div');
-    key.className = 'kv-key';
-    key.textContent = lang;
-    const val = document.createElement('div');
-    val.className = 'kv-value';
-    val.textContent = `${d3.format(',')(count)} lines`;
-    row.append(key, val);
+    const row = document.createElement('p');
+    row.className = 'kv-line';
+    row.innerHTML = `<strong>${lang}:</strong> <span>${d3.format(',')(count)} lines</span>`;
     languageBreakdown.append(row);
   }
 }
