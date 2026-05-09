@@ -65,15 +65,20 @@ function renderStats(lines) {
     .sort((a, b) => d3.descending(a[1], b[1]));
 
   statsContainer.innerHTML = '';
-  const dl = document.createElement('dl');
-  dl.className = 'stats';
+  const grid = document.createElement('div');
+  grid.className = 'kv-grid stats-grid';
 
   const addStat = (label, value) => {
-    const dt = document.createElement('dt');
-    dt.textContent = label;
-    const dd = document.createElement('dd');
-    dd.textContent = value;
-    dl.append(dt, dd);
+    const row = document.createElement('div');
+    row.className = 'kv-row';
+    const key = document.createElement('div');
+    key.className = 'kv-key';
+    key.textContent = label;
+    const val = document.createElement('div');
+    val.className = 'kv-value';
+    val.textContent = value;
+    row.append(key, val);
+    grid.append(row);
   };
 
   addStat('Lines', d3.format(',')(lines.length));
@@ -85,7 +90,7 @@ function renderStats(lines) {
   addStat('Max Nesting Depth', d3.format(',')(maxDepth));
   addStat('Most Active File Type', byType[0]?.[0] ?? 'n/a');
 
-  statsContainer.append(dl);
+  statsContainer.append(grid);
 }
 
 function updateTooltipContent(commit) {
@@ -153,11 +158,16 @@ function updateSelectionUI() {
 
   languageBreakdown.innerHTML = '';
   for (const [lang, count] of byLang) {
-    const dt = document.createElement('dt');
-    dt.textContent = lang;
-    const dd = document.createElement('dd');
-    dd.textContent = `${d3.format(',')(count)} lines`;
-    languageBreakdown.append(dt, dd);
+    const row = document.createElement('div');
+    row.className = 'kv-row';
+    const key = document.createElement('div');
+    key.className = 'kv-key';
+    key.textContent = lang;
+    const val = document.createElement('div');
+    val.className = 'kv-value';
+    val.textContent = `${d3.format(',')(count)} lines`;
+    row.append(key, val);
+    languageBreakdown.append(row);
   }
 }
 

@@ -319,16 +319,45 @@ h6 {
   color: color-mix(in oklch, canvasText, canvas 25%);
 }
 
+.kv-grid {
+  display: grid;
+  gap: 0.5rem 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
+.stats-grid {
+  grid-template-columns: repeat(3, minmax(15rem, 1fr));
+}
+
+.kv-row {
+  display: grid;
+  grid-template-columns: max-content minmax(4rem, 1fr);
+  gap: 0.5rem 0.85rem;
+  align-items: baseline;
+}
+
+.kv-key {
+  font-weight: 650;
+}
+
+.kv-value {
+  color: color-mix(in oklch, canvasText, canvas 25%);
+}
+
+#language-breakdown.stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(11rem, 1fr));
+  gap: 0.5rem 1rem;
+}
+
 @media (max-width: 900px) {
-  #stats .stats {
-    grid-template-columns: repeat(2, max-content minmax(4rem, 1fr));
-  }
+  .stats-grid { grid-template-columns: repeat(2, minmax(15rem, 1fr)); }
+  #language-breakdown.stats { grid-template-columns: repeat(2, minmax(11rem, 1fr)); }
 }
 
 @media (max-width: 560px) {
-  #stats .stats {
-    grid-template-columns: max-content minmax(4rem, 1fr);
-  }
+  .stats-grid { grid-template-columns: 1fr; }
+  #language-breakdown.stats { grid-template-columns: 1fr; }
 }
 
 .chart-wrap {
