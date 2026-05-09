@@ -114,6 +114,24 @@ function isCommitSelected(commit) {
   return selectedCommits.includes(commit);
 }
 
+function toggleCommitSelection(event, commit) {
+  const multiSelect = event.shiftKey || event.metaKey || event.ctrlKey;
+
+  if (!multiSelect) {
+    selectedCommits = [commit];
+    updateSelectionUI();
+    return;
+  }
+
+  if (isCommitSelected(commit)) {
+    selectedCommits = selectedCommits.filter((d) => d !== commit);
+  } else {
+    selectedCommits = [...selectedCommits, commit];
+  }
+
+  updateSelectionUI();
+}
+
 function updateSelectionUI() {
   d3.selectAll('.commit-dot')
     .classed('selected', (d) => isCommitSelected(d))
@@ -209,7 +227,8 @@ function drawScatter() {
     .style('pointer-events', 'all')
     .on('mouseenter', (event, d) => showTooltip(event, d))
     .on('mousemove', (event, d) => showTooltip(event, d))
-    .on('mouseleave', hideTooltip);
+    .on('mouseleave', hideTooltip)
+    .on('click', (event, d) => toggleCommitSelection(event, d));
 }
 
 async function init() {
