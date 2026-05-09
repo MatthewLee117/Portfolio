@@ -99,6 +99,8 @@ function updateTooltipContent(commit) {
 
 function showTooltip(event, commit) {
   updateTooltipContent(commit);
+  selectedCommits = [commit];
+  updateSelectionUI();
   tooltip.hidden = false;
   const x = event.clientX + 16;
   const y = event.clientY + 16;
