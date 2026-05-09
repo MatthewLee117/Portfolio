@@ -294,10 +294,16 @@ h6 {
   }
 }
 
-#stats .stats,
+#stats .stats {
+  display: grid;
+  grid-template-columns: repeat(3, max-content minmax(4rem, 1fr));
+  gap: 0.4rem 1rem;
+  margin: 0.5rem 0 1rem;
+}
+
 #language-breakdown.stats {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: max-content minmax(5rem, 1fr);
   gap: 0.4rem 1rem;
   margin: 0.5rem 0 1rem;
 }
@@ -305,36 +311,23 @@ h6 {
 #stats dt,
 #language-breakdown dt {
   font-weight: 650;
-  grid-row: span 1;
 }
 
 #stats dd,
 #language-breakdown dd {
-  margin: 0 0 0.5rem;
+  margin: 0;
   color: color-mix(in oklch, canvasText, canvas 25%);
-  grid-row: span 1;
-}
-
-#stats .stats dt,
-#stats .stats dd {
-  grid-column: auto;
-}
-
-#stats .stats {
-  grid-auto-flow: row;
 }
 
 @media (max-width: 900px) {
-  #stats .stats,
-  #language-breakdown.stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  #stats .stats {
+    grid-template-columns: repeat(2, max-content minmax(4rem, 1fr));
   }
 }
 
 @media (max-width: 560px) {
-  #stats .stats,
-  #language-breakdown.stats {
-    grid-template-columns: 1fr;
+  #stats .stats {
+    grid-template-columns: max-content minmax(4rem, 1fr);
   }
 }
 
