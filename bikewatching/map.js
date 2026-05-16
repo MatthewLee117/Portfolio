@@ -1,20 +1,53 @@
 import mapboxgl from 'https://cdn.jsdelivr.net/npm/mapbox-gl@3/+esm';
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7/+esm';
 
+function safeGetLocalStorage(key) {
+  try {
+    return localStorage.getItem(key);
+  } catch (_error) {
+    return null;
+  }
+}
+
+function safeSetLocalStorage(key, value) {
+  try {
+    localStorage.setItem(key, value);
+  } catch (_error) {
+    // Ignore storage failures (private mode / strict settings).
+  }
+}
+
 function getMapboxToken() {
+  const fromQuery = new URLSearchParams(location.search).get('mapbox_token')?.trim();
   const fromMeta = document.querySelector('meta[name="mapbox-token"]')?.content?.trim();
   const fromWindow = globalThis.MAPBOX_ACCESS_TOKEN?.trim?.();
-  const fromStorage = localStorage.getItem('mapboxToken')?.trim();
-  const token = fromMeta || fromWindow || fromStorage || '';
+  const fromStorage = safeGetLocalStorage('mapboxToken')?.trim();
+  const token = fromQuery || fromMeta || fromWindow || fromStorage || '';
 
   if (token && token !== fromStorage) {
-    localStorage.setItem('mapboxToken', token);
+    safeSetLocalStorage('mapboxToken', token);
   }
 
   return token;
 }
 
-mapboxgl.accessToken = getMapboxToken();
+const accessToken = getMapboxToken();
+const mapContainer = document.getElementById('map');
+
+if (!accessToken) {
+  if (mapContainer) {
+    mapContainer.innerHTML = `
+      <div style="padding:1rem; font: 500 1rem/1.4 system-ui,sans-serif;">
+        Map cannot load yet: missing Mapbox token.
+        Add <code>?mapbox_token=YOUR_TOKEN</code> to this page URL or set
+        <code>&lt;meta name="mapbox-token" ...&gt;</code> in <code>index.html</code>.
+      </div>
+    `;
+  }
+  throw new Error('Missing Mapbox access token.');
+}
+
+mapboxgl.accessToken = accessToken;
 
 const map = new mapboxgl.Map({
   container: 'map',
