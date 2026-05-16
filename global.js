@@ -126,13 +126,31 @@ export function renderProjects(projects, containerElement, headingLevel = "h2") 
 
   containerElement.innerHTML = "";
 
+  function resolveProjectUrl(projectUrl) {
+    if (!projectUrl) return null;
+    if (/^https?:\/\//i.test(projectUrl)) return projectUrl;
+
+    const normalized = projectUrl.replace(/^\.\//, "");
+    return new URL(normalized, `${location.origin}${BASE_PATH}`).toString();
+  }
+
   for (const project of projects) {
     const article = document.createElement("article");
     article.className = "project-card";
 
     const title = document.createElement(allowedHeading);
     title.className = "project-title";
-    title.textContent = project.title ?? "Untitled Project";
+    const titleText = project.title ?? "Untitled Project";
+    const projectUrl = resolveProjectUrl(project.url);
+
+    if (projectUrl) {
+      const link = document.createElement("a");
+      link.href = projectUrl;
+      link.textContent = titleText;
+      title.append(link);
+    } else {
+      title.textContent = titleText;
+    }
 
     const image = document.createElement("img");
     image.className = "project-image";
