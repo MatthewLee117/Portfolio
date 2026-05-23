@@ -481,12 +481,15 @@ h6 {
 #files dt {
   grid-column: 1;
   margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 2rem;
 }
 
 #files dt small {
   display: block;
-  opacity: 0.7;
-  font-size: 0.8em;
+  opacity: 0.65;
+  font-size: 1.8rem;
+  font-family: system-ui;
 }
 
 #files dd {
@@ -508,52 +511,36 @@ h6 {
   border-radius: 50%;
 }
 
-#scrolly-1 {
-  position: relative;
-  display: flex;
+#stats .kv-list {
+  grid-template-columns: repeat(6, minmax(7rem, 1fr));
   gap: 1rem;
-  align-items: flex-start;
 }
 
-#scrolly-1 > * {
-  flex: 1;
+#stats .kv-line strong {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+  color: color-mix(in oklch, canvasText, canvas 40%);
 }
 
-#scatter-story {
-  position: relative;
-}
-
-#scatter-plot {
-  position: sticky;
-  top: 0;
-  left: 0;
-  bottom: auto;
-  height: 50vh;
-}
-
-.step {
-  padding-bottom: 72vh;
+#stats .kv-line span {
+  display: block;
+  color: canvasText;
+  font-size: 2.8rem;
+  line-height: 1.05;
 }
 
 @media (max-width: 900px) {
-  #scrolly-1 {
-    flex-direction: column;
-  }
-
-  #scatter-plot {
-    position: static;
-    height: auto;
-  }
-
-  .step {
-    padding-bottom: 2.5rem;
-  }
-
   #files {
     grid-template-columns: 1fr;
   }
 
   #files dd {
     grid-column: 1;
+  }
+
+  #stats .kv-list {
+    grid-template-columns: repeat(2, minmax(10rem, 1fr));
   }
 }
