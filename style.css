@@ -446,3 +446,114 @@ h6 {
   fill: color-mix(in oklch, var(--color-accent), transparent 70%);
   stroke: color-mix(in oklch, var(--color-accent), canvasText 15%);
 }
+
+.slider-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin: 0.4rem 0 0.8rem;
+}
+
+#commit-progress {
+  flex: 1;
+}
+
+#commit-time {
+  margin-left: auto;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+#files {
+  display: grid;
+  grid-template-columns: minmax(16rem, 2fr) minmax(18rem, 5fr);
+  gap: 0.35rem 0.8rem;
+  margin-top: 1.25rem;
+}
+
+#files > div {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: subgrid;
+  align-items: start;
+}
+
+#files dt {
+  grid-column: 1;
+  margin: 0;
+}
+
+#files dt small {
+  display: block;
+  opacity: 0.7;
+  font-size: 0.8em;
+}
+
+#files dd {
+  grid-column: 2;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  align-content: start;
+  gap: 0.15em;
+  padding-top: 0.2em;
+  margin: 0;
+}
+
+.loc {
+  display: inline-block;
+  width: 0.5em;
+  aspect-ratio: 1;
+  background: var(--color, steelblue);
+  border-radius: 50%;
+}
+
+#scrolly-1 {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+#scrolly-1 > * {
+  flex: 1;
+}
+
+#scatter-story {
+  position: relative;
+}
+
+#scatter-plot {
+  position: sticky;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  height: 50vh;
+}
+
+.step {
+  padding-bottom: 72vh;
+}
+
+@media (max-width: 900px) {
+  #scrolly-1 {
+    flex-direction: column;
+  }
+
+  #scatter-plot {
+    position: static;
+    height: auto;
+  }
+
+  .step {
+    padding-bottom: 2.5rem;
+  }
+
+  #files {
+    grid-template-columns: 1fr;
+  }
+
+  #files dd {
+    grid-column: 1;
+  }
+}
